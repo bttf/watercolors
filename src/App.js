@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import DotSelector from './DotSelector';
+import Renderer from './Renderer';
 import './App.css';
 
 function App() {
+  const [imageUrl, setImageUrl] = useState(null);
+  const [dotMatrix, setDotMatrix] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="renderer-container">
+        <Renderer dotMatrix={dotMatrix} imageUrl={imageUrl} />
+      </div>
+      <div className="dot-selector-container">
+        <DotSelector
+          dotMatrix={dotMatrix}
+          setDotMatrix={setDotMatrix}
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
+        />
+      </div>
     </div>
   );
 }
